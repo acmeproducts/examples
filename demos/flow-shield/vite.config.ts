@@ -6,7 +6,6 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      '@': resolve(__dirname, 'src'),
       'three': resolve(__dirname, 'node_modules/three'),
       'postprocessing': resolve(__dirname, 'node_modules/postprocessing'),
     },

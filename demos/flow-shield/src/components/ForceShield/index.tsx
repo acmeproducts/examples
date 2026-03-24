@@ -4,7 +4,7 @@ import { useRef, useMemo, useEffect, useCallback } from "react";
 import { useFrame } from "@react-three/fiber";
 import type { ThreeEvent } from "@react-three/fiber";
 import * as THREE from "three";
-import type { Preset } from "@/components/overlay/OverlayButtons";
+import type { Preset } from "../overlay/OverlayButtons";
 import { MAX_HITS, SHIELD_PRESETS } from "./consts";
 import { useShieldControls } from "./useShieldControls";
 import { createShieldMaterial } from "./shaderMaterial";

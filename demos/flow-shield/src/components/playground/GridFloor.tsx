@@ -4,7 +4,7 @@ import { useMemo } from "react";
 import * as THREE from "three";
 import { Grid, MeshReflectorMaterial } from "@react-three/drei";
 import { useControls, folder } from "leva";
-import { COLORS } from "@/components/shared/theme";
+import { COLORS } from "../shared/theme";
 import type { SceneMode } from "./SceneContent";
 
 function useRadialAlphaMap(size: number, innerStop: number, outerStop: number) {

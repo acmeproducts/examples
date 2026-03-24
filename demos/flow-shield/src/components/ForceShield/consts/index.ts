@@ -1,4 +1,4 @@
-import { Preset } from "@/components/overlay/OverlayButtons";
+import { Preset } from "../../overlay/OverlayButtons";
 
 export const MAX_HITS = 6;
 

@@ -3,12 +3,12 @@
 import { useState, useCallback, useRef } from "react";
 import { Canvas } from "@react-three/fiber";
 import { Leva, useControls } from "leva";
-import { LEVA_THEME } from "@/components/shared/theme";
+import { LEVA_THEME } from "../shared/theme";
 import SceneContent from "./SceneContent";
 import type { SceneMode } from "./SceneContent";
-import UIOverlay from "@/components/overlay/UIOverlay";
-import OverlayButtons, { type Preset } from "@/components/overlay/OverlayButtons";
-import LoadingOverlay from "@/components/overlay/LoadingOverlay";
+import UIOverlay from "../overlay/UIOverlay";
+import OverlayButtons, { type Preset } from "../overlay/OverlayButtons";
+import LoadingOverlay from "../overlay/LoadingOverlay";
 
 export default function PlaygroundCanvas() {
   const [showGrid, setShowGrid] = useState(true);

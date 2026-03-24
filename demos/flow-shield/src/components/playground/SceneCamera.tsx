@@ -6,7 +6,7 @@ import { useThree } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { useControls, folder } from "leva";
 import { MathUtils } from "three";
-import type { Preset } from "@/components/overlay/OverlayButtons";
+import type { Preset } from "../overlay/OverlayButtons";
 
 const DEFAULT_POS: [number, number, number] = [8, 5, 8];
 

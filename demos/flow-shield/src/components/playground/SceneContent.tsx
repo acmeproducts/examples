@@ -9,7 +9,7 @@ import GlbModel from "./GlbModel";
 import ForceShield from "../ForceShield";
 import PostProcessing from "./PostProcessing";
 import { Droideka } from "./Droideka";
-import type { Preset } from "@/components/overlay/OverlayButtons";
+import type { Preset } from "../overlay/OverlayButtons";
 
 export type SceneMode = "Background" | "Frame";
 

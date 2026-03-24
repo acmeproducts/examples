@@ -4,7 +4,7 @@ import { useRef, useEffect } from "react";
 import { useHelper } from "@react-three/drei";
 import { useControls, folder } from "leva";
 import { DirectionalLight, DirectionalLightHelper } from "three";
-import type { Preset } from "@/components/overlay/OverlayButtons";
+import type { Preset } from "../overlay/OverlayButtons";
 
 const LIGHTING_PRESETS: Record<Preset, Record<string, unknown>> = {
   default: {
