@@ -1,0 +1,46 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600&family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;500&display=swap");
+
+:root {
+  --font-barlow: "Barlow";
+  --font-bebas: "Bebas Neue";
+  --font-ibm-mono: "IBM Plex Mono";
+
+  --color-bg: #1a1816;
+  --color-bg-light: #242220;
+  --color-panel: #1e1c1a;
+  --color-surface: #2a2826;
+  --color-border: #3a3836;
+  --color-border-light: #5c5854;
+  --color-text: #d4cfc8;
+  --color-text-muted: #8a847a;
+  --color-accent: #c8b89a;
+  --color-accent-dim: #9a8e78;
+  --color-white: #f0ece6;
+  --color-black: #0e0d0c;
+
+  --overlay-bg: rgba(26, 24, 22, 0.82);
+  --overlay-surface: rgba(42, 40, 38, 0.92);
+  --overlay-border: rgba(92, 88, 84, 0.9);
+  --overlay-text: var(--color-text);
+  --overlay-accent: var(--color-accent);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  overflow: hidden;
+  background: var(--color-black);
+  color: var(--color-text);
+  font-family: var(--font-barlow), sans-serif;
+}
