@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { COLORS } from "../shared/theme";
+import { COLORS } from "../theme/theme";
 import styles from "./OverlayButtons.module.css";
 
 export type Preset = "default" | "droideka";

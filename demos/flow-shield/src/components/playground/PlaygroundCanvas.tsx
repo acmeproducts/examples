@@ -3,7 +3,7 @@
 import { useState, useCallback, useRef } from "react";
 import { Canvas } from "@react-three/fiber";
 import { Leva, useControls } from "leva";
-import { LEVA_THEME } from "../shared/theme";
+import { LEVA_THEME } from "../theme/theme";
 import SceneContent from "./SceneContent";
 import type { SceneMode } from "./SceneContent";
 import UIOverlay from "../overlay/UIOverlay";
