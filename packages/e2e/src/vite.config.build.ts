@@ -5,7 +5,4 @@ import monkeyPatch from "./vite-plugin-monkey";
 
 export default defineConfig({
   plugins: [react(), monkeyPatch()],
-  resolve: {
-    dedupe: ["three", "postprocessing"],
-  },
 });
