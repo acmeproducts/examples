@@ -21,6 +21,19 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (() => {
+                const storageKey = "nav-collapsed";
+                const nav = new URLSearchParams(window.location.search).get("nav");
+                const collapsed =
+                  nav === "closed" ? true : nav === "open" ? false : localStorage.getItem(storageKey) === "1";
+                document.documentElement.toggleAttribute("data-nav-collapsed", collapsed);
+              })();
+            `,
+          }}
+        />
         <Style
           css={`
             @scope {

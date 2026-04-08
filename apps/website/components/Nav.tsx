@@ -19,6 +19,18 @@ import { Style } from "./Style";
 
 const STORAGE_KEY = "nav-collapsed";
 
+function getPreferredCollapsed() {
+  const nav = new URLSearchParams(window.location.search).get("nav");
+  if (nav === "closed") return true;
+  if (nav === "open") return false;
+
+  return localStorage.getItem(STORAGE_KEY) === "1";
+}
+
+function syncCollapsedAttr(collapsed: boolean) {
+  document.documentElement.toggleAttribute("data-nav-collapsed", collapsed);
+}
+
 export default function Nav({
   demos,
   ...props
@@ -29,6 +41,7 @@ export default function Nav({
   );
 
   const [collapsed, setCollapsed] = useState(false);
+  const [ready, setReady] = useState(false);
 
   const toggle = useCallback(() => {
     setCollapsed((prev) => {
@@ -39,6 +52,17 @@ export default function Nav({
   }, []);
 
   const { demoname } = useParams();
+
+  useEffect(() => {
+    const next = getPreferredCollapsed();
+    setCollapsed(next);
+    setReady(true);
+  }, []);
+
+  useEffect(() => {
+    if (!ready) return;
+    syncCollapsedAttr(collapsed);
+  }, [collapsed, ready]);
 
   const firstRef = useRef(true);
   useEffect(() => {
@@ -101,6 +125,10 @@ export default function Nav({
               margin-inline-start: calc(-1 * var(--sidebar-w));
             }
 
+            html[data-nav-collapsed] .Nav {
+              margin-inline-start: calc(-1 * var(--sidebar-w));
+            }
+
             nav {
               height: 100%;
               overflow-y: auto;
@@ -111,6 +139,11 @@ export default function Nav({
             }
 
             :scope[data-collapsed] nav {
+              opacity: 0;
+              pointer-events: none;
+            }
+
+            html[data-nav-collapsed] .Nav nav {
               opacity: 0;
               pointer-events: none;
             }
@@ -171,11 +204,23 @@ export default function Nav({
               translate: 25% -50%;
             }
 
+            html[data-nav-collapsed] .Nav .toggle {
+              translate: 25% -50%;
+            }
+
             :scope[data-collapsed][data-near] .toggle {
               translate: 75% -50%;
             }
 
+            html[data-nav-collapsed] .Nav[data-near] .toggle {
+              translate: 75% -50%;
+            }
+
             :scope[data-collapsed] .toggle svg {
+              transform: rotate(180deg);
+            }
+
+            html[data-nav-collapsed] .Nav .toggle svg {
               transform: rotate(180deg);
             }
 
@@ -270,7 +315,7 @@ export default function Nav({
               strokeLinejoin="round"
             />
           </svg>
-          <span className="toggleLabel">{collapsed ? "show" : "hide"}</span>
+          <span className="toggleLabel">{ready ? (collapsed ? "show" : "hide") : ""}</span>
         </span>
       </button>
 
