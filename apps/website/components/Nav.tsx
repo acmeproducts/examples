@@ -30,10 +30,6 @@ export default function Nav({
 
   const [collapsed, setCollapsed] = useState(false);
 
-  useEffect(() => {
-    setCollapsed(localStorage.getItem(STORAGE_KEY) === "1");
-  }, []);
-
   const toggle = useCallback(() => {
     setCollapsed((prev) => {
       const next = !prev;
