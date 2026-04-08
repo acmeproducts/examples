@@ -1,0 +1,10 @@
+managePackageManagerVersions: true
+
+packages:
+  - apps/*
+  - demos/*
+  - packages/*
+
+onlyBuiltDependencies:
+  - esbuild
+  - unrs-resolver
