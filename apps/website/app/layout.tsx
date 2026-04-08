@@ -47,25 +47,19 @@ export default function RootLayout({
                 );
 
                 background: #eee;
-                display: grid;
-                grid-template-columns: var(--sidebar-w) 1fr;
+                display: flex;
                 height: 100dvh;
-                transition: grid-template-columns 1078ms var(--motion-curve);
-              }
-
-              :scope:has(.Nav[data-collapsed]) {
-                grid-template-columns: 0px 1fr;
+                overflow: hidden;
               }
 
               main {
-                width: 100%;
+                flex: 1;
+                min-width: 0;
                 height: 100dvh;
                 overflow: hidden;
                 display: grid;
                 place-items: center;
                 padding: 1.5rem;
-                min-width: 0;
-                min-height: 0;
               }
             }
           `}

@@ -28,24 +28,29 @@ export function ScaledDemoFrame({
     const container = containerRef.current;
     if (!container) return;
 
-    const update = () => {
-      const rect = container.getBoundingClientRect();
-      const width = window.innerWidth;
-      const height = window.innerHeight;
-      const scale = Math.min(rect.width / width, rect.height / height, 1);
-
-      setFrame({ width, height, scale });
+    let rafId = 0;
+    const schedule = () => {
+      if (rafId) return;
+      rafId = requestAnimationFrame(() => {
+        rafId = 0;
+        const rect = container.getBoundingClientRect();
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+        const scale = Math.min(rect.width / width, rect.height / height, 1);
+        setFrame({ width, height, scale });
+      });
     };
 
-    update();
+    schedule();
 
-    const resizeObserver = new ResizeObserver(update);
+    const resizeObserver = new ResizeObserver(schedule);
     resizeObserver.observe(container);
-    window.addEventListener("resize", update);
+    window.addEventListener("resize", schedule);
 
     return () => {
+      cancelAnimationFrame(rafId);
       resizeObserver.disconnect();
-      window.removeEventListener("resize", update);
+      window.removeEventListener("resize", schedule);
     };
   }, []);
 

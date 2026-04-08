@@ -91,10 +91,18 @@ export default function Nav({
           @scope {
             :scope {
               position: relative;
+              width: var(--sidebar-w);
+              flex-shrink: 0;
               height: 100dvh;
-              min-width: 0;
               overflow: visible;
               z-index: 2;
+              margin-inline-start: 0;
+              transition: margin-inline-start 1078ms var(--motion-curve);
+              will-change: margin-inline-start;
+            }
+
+            :scope[data-collapsed] {
+              margin-inline-start: calc(-1 * var(--sidebar-w));
             }
 
             nav {
@@ -103,16 +111,12 @@ export default function Nav({
               overscroll-behavior: contain;
               scrollbar-gutter: stable;
               opacity: 1;
-              transform: translateX(0);
-              transition:
-                opacity 0.2s linear,
-                transform 1078ms var(--motion-curve);
+              transition: opacity 0.15s linear;
             }
 
             :scope[data-collapsed] nav {
               opacity: 0;
               pointer-events: none;
-              transform: translateX(-1rem);
             }
 
             .toggle {
@@ -137,7 +141,6 @@ export default function Nav({
                 box-shadow 0.15s ease,
                 translate 0.25s ease;
               box-shadow: 0 10px 30px rgb(0 0 0 / 0.12);
-              backdrop-filter: blur(12px);
 
               &:hover {
                 background: #f5f5f5;
