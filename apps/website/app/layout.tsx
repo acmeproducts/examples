@@ -25,7 +25,10 @@ export default function RootLayout({
           css={`
             @scope {
               :scope {
-                --sidebar-w: 260px;
+                --sidebar-w: 200px;
+                @media (min-width: 640px) {
+                  --sidebar-w: 260px;
+                }
                 --motion-curve: linear(
                   0.00, 0.00780, 0.0340, 0.0738, 0.116, 0.160, 0.203, 0.244,
                   0.284, 0.322, 0.357, 0.391, 0.422, 0.453, 0.483, 0.510,
