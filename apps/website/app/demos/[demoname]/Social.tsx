@@ -35,48 +35,56 @@ export function Social({
           @scope {
             & {
               display: flex;
-              flex-direction: column;
-              justify-content: center;
-              gap: 0.5em;
-              @media (min-aspect-ratio: 1/1) {
-                gap: 0.75em;
-              }
-
-              color: #333;
-            }
-
-            a svg {
-              width: 1.25em;
-              @media (min-aspect-ratio: 1/1) {
-                width: 1.5em;
-              }
-              aspect-ratio: 1;
+              gap: 0.1rem;
+              padding: 0.3rem;
+              border-radius: 999px;
+              background: rgb(255 255 255 / 0.82);
+              backdrop-filter: blur(10px);
+              box-shadow: 0 1px 6px rgb(0 0 0 / 0.1);
             }
 
             a {
               position: relative;
-              > span {
-                position: absolute;
-                right: 100%;
-                margin-inline-end: 0.75em;
-                top: 50%;
-                transform: translateY(-50%);
-                white-space: nowrap;
-                font-size: 80%;
-              }
+              display: grid;
+              place-items: center;
+              width: 1.8rem;
+              height: 1.8rem;
+              border-radius: 50%;
+              color: #555;
+              transition:
+                background 0.15s ease,
+                color 0.15s ease;
+            }
 
-              > span {
-                opacity: 0;
-                transform: translate(-0.5em, -50%);
-                transition-property: opacity transform;
-                transition-duration: 0.2s;
-              }
-              @media (hover: hover) {
-                &:hover > span {
-                  opacity: 1;
-                  transform: translate(0rem, -50%);
-                }
-              }
+            a:hover {
+              background: rgb(0 0 0 / 0.06);
+              color: #111;
+            }
+
+            a svg {
+              width: 0.95rem;
+              height: 0.95rem;
+            }
+
+            a > span {
+              position: absolute;
+              top: 100%;
+              left: 50%;
+              translate: -50% 0;
+              margin-top: 0.45rem;
+              padding: 0.25em 0.5em;
+              border-radius: 4px;
+              background: #222;
+              color: white;
+              font-size: 0.65rem;
+              white-space: nowrap;
+              pointer-events: none;
+              opacity: 0;
+              transition: opacity 0.15s ease;
+            }
+
+            a:hover > span {
+              opacity: 1;
             }
           }
         `}

@@ -92,13 +92,8 @@ export default async function Page(props: Props) {
             }
             .Social {
               position: fixed;
-              right: 0;
-              top: 0;
-              bottom: 0;
-              margin-inline-end: 0.5rem;
-              @media (min-aspect-ratio: 1/1) {
-                margin-inline-end: 1.25rem;
-              }
+              top: 0.75rem;
+              right: 0.75rem;
             }
           }
         `}
