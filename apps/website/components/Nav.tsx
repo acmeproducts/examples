@@ -54,7 +54,7 @@ export default function Nav({
   const { demoname } = useParams();
 
   useEffect(() => {
-    const next = getPreferredCollapsed();
+    const next = document.documentElement.hasAttribute("data-nav-collapsed");
     setCollapsed(next);
     setReady(true);
   }, []);
@@ -66,6 +66,8 @@ export default function Nav({
 
   const firstRef = useRef(true);
   useEffect(() => {
+    const hasDemoSelected = typeof demoname === "string" && demoname.length > 0;
+    if (!hasDemoSelected) return;
     const i = demos.findIndex(({ name }) => name === demoname);
     const li = lisRef.current[i]?.current;
     if (li)

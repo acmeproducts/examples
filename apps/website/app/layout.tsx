@@ -26,9 +26,12 @@ export default function RootLayout({
             __html: `
               (() => {
                 const storageKey = "nav-collapsed";
+                const parts = window.location.pathname.split("/").filter(Boolean);
+                const demosIndex = parts.indexOf("demos");
+                const hasDemoSelected = demosIndex !== -1 && !!parts[demosIndex + 1];
                 const nav = new URLSearchParams(window.location.search).get("nav");
                 const collapsed =
-                  nav === "closed" ? true : nav === "open" ? false : localStorage.getItem(storageKey) === "1";
+                  !hasDemoSelected ? false : nav === "closed" ? true : nav === "open" ? false : localStorage.getItem(storageKey) === "1";
                 document.documentElement.toggleAttribute("data-nav-collapsed", collapsed);
               })();
             `,
