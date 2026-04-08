@@ -1,4 +1,5 @@
 // Importing JSON directly
+import { NEW_DEMOS } from "@/const/new";
 import pkg from "@/package.json";
 
 import { generatePort } from "@examples/e2e";
@@ -10,6 +11,7 @@ const host =
   process.env.NODE_ENV === "development"
     ? (port: number) => `http://localhost:${port}`
     : () => (BASE_URL ? new URL(BASE_URL).origin : "");
+
 
 export function getDemos() {
   return Object.keys(pkg.dependencies)
@@ -27,6 +29,7 @@ export function getDemos() {
         thumb: `${embed_url}/thumbnail.webp`,
         embed_url,
         website_url,
+        isNew: NEW_DEMOS.has(demoname),
       };
     });
 }

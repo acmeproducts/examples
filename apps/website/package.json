@@ -11,6 +11,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@demo/flow-shield": "workspace:*",
     "@demo/aquarium": "workspace:*",
     "@demo/arkanoid": "workspace:*",
     "@demo/arkanoid-under-60-loc": "workspace:*",
@@ -55,7 +56,6 @@
     "@demo/flexbox-yoga-in-webgl": "workspace:*",
     "@demo/floating-diamonds": "workspace:*",
     "@demo/floating-instanced-shoes": "workspace:*",
-    "@demo/flow-shield": "workspace:*",
     "@demo/floating-laptop": "workspace:*",
     "@demo/flying-bananas": "workspace:*",
     "@demo/frosted-glass": "workspace:*",

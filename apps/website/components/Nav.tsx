@@ -57,6 +57,21 @@ export default function Nav({
     firstRef.current = false;
   }, [demoname, demos]);
 
+  const navRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!collapsed) {
+      navRef.current?.removeAttribute("data-near");
+      return;
+    }
+    const onMove = (e: MouseEvent) => {
+      if (e.clientX < 120) navRef.current?.setAttribute("data-near", "");
+      else navRef.current?.removeAttribute("data-near");
+    };
+    window.addEventListener("mousemove", onMove);
+    return () => window.removeEventListener("mousemove", onMove);
+  }, [collapsed]);
+
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       if (e.key === "[" && e.metaKey) toggle();
@@ -66,7 +81,11 @@ export default function Nav({
   }, [toggle]);
 
   return (
-    <div className="Nav" data-collapsed={collapsed || undefined}>
+    <div
+      ref={navRef}
+      className="Nav"
+      data-collapsed={collapsed || undefined}
+    >
       <Style
         css={`
           @scope {
@@ -150,18 +169,11 @@ export default function Nav({
             }
 
             :scope[data-collapsed] .toggle {
-              translate: 15% -50%;
+              translate: 25% -50%;
             }
 
-            :scope[data-collapsed] .toggle::before {
-              content: "";
-              position: absolute;
-              inset: -1rem;
-              inset-inline-end: -3rem;
-            }
-
-            :scope[data-collapsed] .toggle:hover {
-              translate: 65% -50%;
+            :scope[data-collapsed][data-near] .toggle {
+              translate: 75% -50%;
             }
 
             :scope[data-collapsed] .toggle svg {
@@ -213,6 +225,22 @@ export default function Nav({
               overflow: hidden;
             }
 
+            .pill {
+              position: absolute;
+              top: 6px;
+              right: 6px;
+              padding: 2px 7px;
+              font-size: 0.55rem;
+              font-weight: 700;
+              letter-spacing: 0.06em;
+              text-transform: uppercase;
+              line-height: 1.5;
+              color: white;
+              background: #e8756a;
+              border-radius: 999px;
+              z-index: 1;
+            }
+
             a img {
               object-fit: cover;
               width: 100%;
@@ -249,13 +277,14 @@ export default function Nav({
 
       <nav {...props}>
         <ul ref={ulRef}>
-          {demos.map(({ name, thumb }, i) => (
+          {demos.map(({ name, thumb, isNew }, i) => (
             <li key={thumb} ref={lisRef.current[i]}>
               <Link
                 href={`/demos/${name}`}
                 className={clsx({ active: demoname === name })}
               >
                 <div className="thumb">
+                  {isNew && <span className="pill">New</span>}
                   <Image src={thumb} fill sizes="227px" alt={name} />
                 </div>
               </Link>
