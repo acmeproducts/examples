@@ -1,17 +1,11 @@
 'use client'
 
 import OverlayHeader from './OverlayHeader'
+import styles from './UIOverlay.module.css'
 
 export default function UIOverlay() {
   return (
-    <div
-      style={{
-        position: 'fixed',
-        inset: 0,
-        zIndex: 50,
-        pointerEvents: 'none'
-      }}
-    >
+    <div className={styles.overlay}>
       <OverlayHeader />
     </div>
   )

@@ -1,0 +1,78 @@
+.header {
+  position: absolute;
+  top: max(24px, calc(env(safe-area-inset-top) + 12px));
+  left: max(28px, calc(env(safe-area-inset-left) + 16px));
+  max-width: 320px;
+}
+
+.eyebrow {
+  margin-bottom: 6px;
+  color: var(--color-accent-dim, #9a8e78);
+  font-family: var(--font-ibm-mono), monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.rule {
+  height: 1px;
+  margin-bottom: 10px;
+  background: var(--color-border-light, #5c5854);
+  opacity: 0.6;
+}
+
+.title {
+  margin: 0;
+  color: var(--color-white, #f0ece6);
+  font-family: var(--font-bebas), sans-serif;
+  font-size: 42px;
+  line-height: 1;
+  letter-spacing: 0.05em;
+}
+
+.subtitle {
+  margin-top: 4px;
+  color: var(--color-text-muted, #8a847a);
+  font-family: var(--font-barlow), sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.meta {
+  margin-top: 12px;
+  color: var(--color-accent-dim, #9a8e78);
+  font-family: var(--font-ibm-mono), monospace;
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+  .header {
+    top: max(12px, calc(env(safe-area-inset-top) + 8px));
+    left: max(12px, calc(env(safe-area-inset-left) + 12px));
+    right: max(12px, calc(env(safe-area-inset-right) + 12px));
+    max-width: none;
+  }
+
+  .eyebrow {
+    font-size: 9px;
+    letter-spacing: 0.16em;
+  }
+
+  .title {
+    font-size: clamp(32px, 10vw, 40px);
+  }
+
+  .subtitle {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+  }
+
+  .meta {
+    font-size: 8px;
+    letter-spacing: 0.1em;
+  }
+}

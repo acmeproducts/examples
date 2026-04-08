@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { Leva, useControls } from 'leva'
 import SceneContent from './components/playground/SceneContent'
@@ -6,10 +6,15 @@ import UIOverlay from './components/overlay/UIOverlay'
 import OverlayButtons from './components/overlay/OverlayButtons'
 import LoadingOverlay from './components/overlay/LoadingOverlay'
 import { LEVA_THEME } from './components/theme/theme'
+import { useIsMobile } from './hooks/useIsMobile'
 
 export default function App() {
   const [showGrid, setShowGrid] = useState(true)
-  const [hideLeva, setHideLeva] = useState(false)
+  const isMobile = useIsMobile()
+  const [hideLeva, setHideLeva] = useState(isMobile)
+
+  // auto-hide Leva when crossing down to mobile
+  useEffect(() => { if (isMobile) setHideLeva(true) }, [isMobile])
   const [glbUrl, setGlbUrl] = useState(null)
   const [preset, setPreset] = useState('default')
   const [isLoadingModel, setIsLoadingModel] = useState(false)
